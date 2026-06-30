@@ -21,6 +21,7 @@ Il database è composto dalle seguenti tabelle principali, collegate tramite vin
 Per garantire la massima trasparenza e riproducibilità, la cartella è strutturata nei seguenti file:
 
 * **`Agenzia_Viaggi.db`**: Il file binario del database SQLite. Contiene l'intero database operativo e già popolato (con i record importati esternamente tramite file CSV).
+* **Cartella `records_agenzia_viaggi/`**: Contiene i dataset grezzi originali (in formato CSV) utilizzati per l'importazione massiva e il popolamento iniziale delle tabelle relazionali.
 * **`TABELLE_AGENZIA_VIAGGI.sql`**: Lo script SQL contenente la definizione dello schema. Contiene esclusivamente le istruzioni di `CREATE TABLE` ed è allegato a scopo puramente documentativo per illustrare l'architettura logica, i tipi di dato e i vincoli relazionali scelti.
 
 ## Query Implementate e Script Python
