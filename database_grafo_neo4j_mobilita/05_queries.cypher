@@ -70,7 +70,7 @@ ORDER BY Cambi_Necessari ASC, Punto_Di_Interesse ASC;
 # ESECUZIONE DELLE QUERY E STAMPA A TERMINALE
 # ------------------------------------------------------------------------------
 
-with driver.session() as session:
+with driver.session(database="trasporti.persona5") as session:
     
     print("\n" + "="*80)
     print(" QUERY 1: PERCORSO TOPOLOGICO PIU' BREVE (Yongen-Jaya -> Akihabara)")
