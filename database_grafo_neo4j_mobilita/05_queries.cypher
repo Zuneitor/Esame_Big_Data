@@ -1,59 +1,96 @@
-// =========================================================================
-// QUERY 1: Trovare il percorso topologico più breve e calcolarne i tempi
-// =========================================================================
+from neo4j import GraphDatabase
 
-// 1. Troviamo i nodi di partenza e arrivo
+# ==============================================================================
+# ARCHITETTURA DI CONNESSIONE E OTTIMIZZAZIONE DI RETE
+# ==============================================================================
+# A differenza dei database relazionali locali (es. SQLite), Neo4j opera come
+# un server indipendente. Aprire il "tunnel" di comunicazione TCP verso la porta
+# 7687 è un'operazione computazionalmente "pesante" (handshake, autenticazione).
+# Per ottimizzare le performance, questo script implementa una connessione 
+# singola (Single Driver Instance): il tunnel viene aperto una sola volta, 
+# tutte le query vengono sparate in sequenza all'interno della stessa sessione,
+# e infine la connessione viene chiusa pulitamente.
+# ==============================================================================
+
+# Credenziali di accesso al DBMS locale
+URI = "bolt://127.0.0.1:7687"
+USERNAME = "neo4j"
+PASSWORD = "12345678"
+
+# Inizializzazione del Driver
+driver = GraphDatabase.driver(URI, auth=(USERNAME, PASSWORD))
+
+# ------------------------------------------------------------------------------
+# DEFINIZIONE DELLE QUERY CYPHER
+# ------------------------------------------------------------------------------
+
+query_percorso_breve = """
 MATCH (partenza:Fermata {nome: 'Yongen-Jaya'})
 MATCH (arrivo:Fermata {nome: 'Akihabara'})
-
-// 2. Calcolo del percorso topologico (minor numero di salti)
-// NOTA: shortestPath trova la via con meno fermate (hops). 
-// Non usa i minuti per prendere questa decisione, esplora la mappa a macchia d'olio.
 MATCH percorso = shortestPath((partenza)-[:COLLEGATA_A*]-(arrivo))
-
-// 3. Estrazione e indicizzazione automatica
-// Sotto il cofano, la funzione relationships() prende l'intero 'percorso' trovato
-// e lo "taglia", creando automaticamente una Lista (Array) delle tratte fisiche. 
-// Questa lista viene indicizzata dal database partendo da zero (binari[0], binari[1]...).
 WITH percorso, relationships(percorso) AS binari
-
-// 4. Calcolo del tempo passato fisicamente in treno
-// L'omino (reduce) accende la calcolatrice e parte da 0.0. 
-// Per ogni tratta (b) pescata dalla lista (binari),
-// aggiunge i minuti di durata (b.durata_minuti) al totale accumulato (tempo).
 WITH percorso, binari,
      reduce(tempo = 0.0, b IN binari | tempo + b.durata_minuti) AS minuti_in_treno
-
-// 5. Calcolo della penalità per i cambi di linea
-// Usiamo un indice 'i' (range) per poter confrontare un elemento con il suo precedente.
 WITH percorso, binari, minuti_in_treno,
      reduce(penalita = 0, i IN range(1, size(binari) - 1) |
-        
-        // Il blocco CASE valuta le condizioni passo passo (come un IF-THEN-ELSE).
         CASE 
-            // Il simbolo '<>' significa "DIVERSO DA".
-            // Chiediamo: "La linea della tratta attuale (binari[i].linea) è DIVERSA 
-            // dalla linea della tratta che ho percorso prima (binari[i-1].linea)?"
-            WHEN binari[i].linea <> binari[i-1].linea 
-            
-            // THEN (Vero): Le linee sono diverse, l'utente ha cambiato treno. 
-            // Aggiungiamo 5 minuti al contatore della penalità.
-            THEN penalita + 5 
-            
-            // ELSE (Falso): Le linee sono uguali, l'utente è rimasto seduto.
-            // Lasciamo la penalità intatta.
+            WHEN binari[i].linea <> binari[i-1].linea THEN penalita + 5 
             ELSE penalita 
         END
      ) AS minuti_cambio_linea
-
-// 6. Preparazione dello "scontrino" finale con i risultati formattati
-// RETURN dice al database di stampare a schermo i dati richiesti.
 RETURN 
-    // List Comprehension: Scorri tutti i nodi (stazioni) toccati, chiamali 'n',
-    // estrai SOLO la proprietà 'nome' e crea una nuova lista pulita.
     [n IN nodes(percorso) | n.nome] AS Itinerario_Stazioni,
+    [b IN binari | b.linea_nome] AS Elenco_Linee_Prese,
+    round(minuti_in_treno, 1) AS Tempo_Puro_Treno,
+    minuti_cambio_linea AS Tempo_Perso_Cambi,
+    round(minuti_in_treno + minuti_cambio_linea, 1) AS Tempo_Totale_Viaggio;
+"""
+
+query_poi_vicini = """
+MATCH (partenza:Fermata {nome: 'Yongen-Jaya'})
+MATCH percorso = (partenza)-[:COLLEGATA_A*0..5]-(arrivo:Fermata)
+MATCH (arrivo)<-[:VICINO_A]-(poi:PuntoInteresse)
+WITH poi, arrivo, relationships(percorso) AS binari
+WITH poi, arrivo,
+     reduce(cambi = 0, i IN range(1, size(binari) - 1) |
+        CASE 
+            WHEN binari[i].linea <> binari[i-1].linea THEN cambi + 1 
+            ELSE cambi 
+        END
+     ) AS numero_cambi
+WHERE numero_cambi <= 2
+RETURN 
+    poi.nome AS Punto_Di_Interesse, 
+    arrivo.nome AS Stazione,
+    min(numero_cambi) AS Cambi_Necessari
+ORDER BY Cambi_Necessari ASC, Punto_Di_Interesse ASC;
+"""
+
+# ------------------------------------------------------------------------------
+# ESECUZIONE DELLE QUERY E STAMPA A TERMINALE
+# ------------------------------------------------------------------------------
+
+with driver.session() as session:
     
-    // Stessa logica: scorri i binari, chiamali 'b', estrai SOLO il nome della linea.
+    print("\n" + "="*80)
+    print(" QUERY 1: PERCORSO TOPOLOGICO PIU' BREVE (Yongen-Jaya -> Akihabara)")
+    print("="*80)
+    risultati_1 = session.run(query_percorso_breve)
+    for record in risultati_1:
+        # Stampiamo i dati in formato dizionario per una lettura chiara
+        for chiave, valore in record.items():
+            print(f"{chiave}: {valore}")
+            
+    print("\n" + "="*80)
+    print(" QUERY 2: PUNTI DI INTERESSE RAGGIUNGIBILI (Max 2 cambi da Yongen-Jaya)")
+    print("="*80)
+    risultati_2 = session.run(query_poi_vicini)
+    for record in risultati_2:
+        print(record.data())
+
+# Chiusura pulita del tunnel di rete
+driver.close()
+print("\nConnessione a Neo4j chiusa correttamente.")    // Stessa logica: scorri i binari, chiamali 'b', estrai SOLO il nome della linea.
     [b IN binari | b.linea_nome] AS Elenco_Linee_Prese,
     
     // La funzione round() arrotonda il numero decimale a una cifra (es. 14.5).
