@@ -1,0 +1,51 @@
+ID_Hotel,Nome_Hotel,Categoria,Localita
+1,Grand Hotel Riviera,4 Stelle,Santa Maria al Bagno
+2,Hotel Tokyo Central,4 Stelle,Tokyo
+3,Raccoon City Lodge,3 Stelle,Raccoon City
+4,Kamurocho Sky Hotel,4 Stelle,Kamurocho
+5,Hotel Vesuvio,4 Stelle,Napoli
+6,Salento Bed & Breakfast,3 Stelle,Lecce
+7,Hotel Du Lac,4 Stelle,Rusty Lake
+8,Miramare Resort,5 Stelle,Gallipoli
+9,Hotel Splendid,3 Stelle,Roma
+10,Osaka Grand Stay,4 Stelle,Osaka
+11,Shibuya Imperial,5 Stelle,Tokyo
+12,Morioh Grand Hotel,4 Stelle,Morioh
+13,Spencer Mansion Resort,5 Stelle,Raccoon City
+14,Sotenbori Pearl,4 Stelle,Osaka
+15,LeBlanc Inn,3 Stelle,Tokyo
+16,Ijincho Bay Hotel,4 Stelle,Yokohama
+17,Rusty Lake Hotel,5 Stelle,Rusty Lake
+18,Passione Resort,5 Stelle,Napoli
+19,Jujutsu Guest House,3 Stelle,Tokyo
+20,Otranto Sea View,4 Stelle,Otranto
+21,Sybil System Hotel,5 Stelle,Tokyo
+22,Millennium Tower Suites,5 Stelle,Kamurocho
+23,Veglie Central Palace,3 Stelle,Veglie
+24,Hotel Excelsior,4 Stelle,Milano
+25,Venice Canal Resort,5 Stelle,Venezia
+26,Florence Art Hotel,4 Stelle,Firenze
+27,Bologna Centrale Stay,3 Stelle,Bologna
+28,Turin Palace,4 Stelle,Torino
+29,Palermo Coast Hotel,4 Stelle,Palermo
+30,Genova Harbor Inn,3 Stelle,Genova
+31,Porto Cesareo Resort,5 Stelle,Porto Cesareo
+32,Kyoto Zen Retreat,4 Stelle,Kyoto
+33,Sapporo Snow Hotel,4 Stelle,Sapporo
+34,Paris Amour Hotel,5 Stelle,Parigi
+35,London Tower Inn,4 Stelle,Londra
+36,New York Central Stay,4 Stelle,New York
+37,Los Angeles Sunshine,5 Stelle,Los Angeles
+38,Miami Beach Resort,5 Stelle,Miami
+39,Berlin Wall Hotel,3 Stelle,Berlino
+40,Madrid Plaza Hotel,4 Stelle,Madrid
+41,Barcelona Gaudi Inn,4 Stelle,Barcellona
+42,Amsterdam Canal Stay,3 Stelle,Amsterdam
+43,Vienna Classic Hotel,4 Stelle,Vienna
+44,Prague Castle View,4 Stelle,Praga
+45,Budapest Thermal Resort,5 Stelle,Budapest
+46,Dubai Oasis,5 Stelle,Dubai
+47,Sydney Opera View,5 Stelle,Sydney
+48,Rio Carnival Stay,4 Stelle,Rio de Janeiro
+49,Cape Town Safari Lodge,4 Stelle,Città del Capo
+50,Sendai Station Hotel,3 Stelle,Sendai

@@ -1,0 +1,101 @@
+ID_Cliente,Nome,Cognome,Email,Telefono,Citta
+1,Agnese,Bianchi,agnese.b.1@email.it,+393330000001,Veglie
+2,Kento,Nanami,k.nanami.2@jujutsu.jp,+810900000002,Tokyo
+3,Leon,Kennedy,leon.k.3@bsaa.us,+15550000003,Raccoon City
+4,Kazuma,Kiryu,kazuma.k.4@dojima.jp,+810900000004,Kamurocho
+5,Goro,Majima,g.majima.5@shimano.jp,+810900000005,Osaka
+6,Ren,Amamiya,ren.a.6@phantoms.jp,+810900000006,Tokyo
+7,Makoto,Niijima,makoto.n.7@phantoms.jp,+810900000007,Tokyo
+8,Satoru,Gojo,s.gojo.8@jujutsu.jp,+810900000008,Kyoto
+9,Shinya,Kogami,s.kogami.9@mws.jp,+810900000009,Tokyo
+10,Jotaro,Kujo,j.kujo.10@speedwagon.com,+810900000010,Tokyo
+11,Dale,Vandermeer,dale.v.11@police.nl,+310600000011,Rusty Lake
+12,Laura,Vanderboom,laura.v.12@email.nl,+310600000012,Rusty Lake
+13,Giorno,Giovanna,g.giovanna.13@passione.it,+393330000013,Napoli
+14,Akane,Tsunemori,a.tsunemori.14@mws.jp,+810900000014,Tokyo
+15,Hei,Li,hei.15@syndicate.net,+810900000015,Tokyo
+16,Jill,Valentine,jill.v.16@bsaa.us,+15550000016,Raccoon City
+17,Ichiban,Kasuga,i.kasuga.17@arakawa.jp,+810900000017,Yokohama
+18,Ryuji,Sakamoto,ryuji.s.18@phantoms.jp,+810900000018,Tokyo
+19,Jolyne,Cujoh,j.cujoh.19@gds.us,+15550000019,Port St. Lucie
+20,Yuji,Itadori,y.itadori.20@jujutsu.jp,+810900000020,Sendai
+21,Marco,Rossi,marco.r.21@email.it,+393330000021,Roma
+22,Sofia,Costa,sofia.c.22@email.it,+393330000022,Lecce
+23,Matteo,Russo,matteo.r.23@email.it,+393330000023,Santa Maria al Bagno
+24,Giulia,Ferrari,giulia.f.24@email.it,+393330000024,Milano
+25,Alessandro,Esposito,ale.e.25@email.it,+393330000025,Napoli
+26,Martina,Bianchi,martina.b.26@email.it,+393330000026,Firenze
+27,Lorenzo,Romano,lorenzo.r.27@email.it,+393330000027,Torino
+28,Chiara,Gallo,chiara.g.28@email.it,+393330000028,Veglie
+29,Gabriele,Costa,gabriele.c.29@email.it,+393330000029,Bari
+30,Sara,Fontana,sara.f.30@email.it,+393330000030,Bologna
+31,Andrea,Rizzo,andrea.r.31@email.it,+393330000031,Genova
+32,Alessia,Moretti,alessia.m.32@email.it,+393330000032,Venezia
+33,Davide,Barbieri,davide.b.33@email.it,+393330000033,Verona
+34,Francesca,Lombardi,francesca.l.34@email.it,+393330000034,Messina
+35,Federico,Marino,federico.m.35@email.it,+393330000035,Padova
+36,Elena,Giordano,elena.g.36@email.it,+393330000036,Taranto
+37,Riccardo,Colombo,riccardo.c.37@email.it,+393330000037,Brescia
+38,Alice,Mancini,alice.m.38@email.it,+393330000038,Parma
+39,Tommaso,Longo,tommaso.l.39@email.it,+393330000039,Prato
+40,Silvia,Leone,silvia.l.40@email.it,+393330000040,Modena
+41,Emanuele,Martinelli,emanuele.m.41@email.it,+393330000041,Reggio Calabria
+42,Ilaria,Marchetti,ilaria.m.42@email.it,+393330000042,Reggio Emilia
+43,Giacomo,Galli,giacomo.g.43@email.it,+393330000043,Perugia
+44,Eleonora,Martini,eleonora.m.44@email.it,+393330000044,Livorno
+45,Michele,De Luca,michele.d.45@email.it,+393330000045,Ravenna
+46,Giorgia,Conte,giorgia.c.46@email.it,+393330000046,Cagliari
+47,Christian,Monti,christian.m.47@email.it,+393330000047,Foggia
+48,Beatrice,Caruso,beatrice.c.48@email.it,+393330000048,Rimini
+49,Pietro,Ruggiero,pietro.r.49@email.it,+393330000049,Salerno
+50,Anna,Ferrara,anna.f.50@email.it,+393330000050,Ferrara
+51,Edoardo,Gargiulo,edoardo.g.51@email.it,+393330000051,Sassari
+52,Valeria,Sorrentino,valeria.s.52@email.it,+393330000052,Latina
+53,Stefano,Farina,stefano.f.53@email.it,+393330000053,Giugliano
+54,Camilla,D'Amico,camilla.d.54@email.it,+393330000054,Monza
+55,Vincenzo,Rossetti,vincenzo.r.55@email.it,+393330000055,Siracusa
+56,Arianna,Grasso,arianna.g.56@email.it,+393330000056,Pescara
+57,Giovanni,Pellegrini,giovanni.p.57@email.it,+393330000057,Bergamo
+58,Michela,Riva,michela.r.58@email.it,+393330000058,Forli
+59,Nicola,Vitale,nicola.v.59@email.it,+393330000059,Trento
+60,Laura,Piras,laura.p.60@email.it,+393330000060,Vicenza
+61,Daniele,Ferri,daniele.f.61@email.it,+393330000061,Terni
+62,Simona,Fabbri,simona.f.62@email.it,+393330000062,Bolzano
+63,Fabio,Bianco,fabio.b.63@email.it,+393330000063,Novara
+64,Valentina,Santoro,valentina.s.64@email.it,+393330000064,Piacenza
+65,Luigi,Fiore,luigi.f.65@email.it,+393330000065,Ancona
+66,Roberta,Serra,roberta.s.66@email.it,+393330000066,Andria
+67,Claudio,Gatti,claudio.g.67@email.it,+393330000067,Arezzo
+68,Federica,Mariani,federica.m.68@email.it,+393330000068,Udine
+69,Simone,Piras,simone.p.69@email.it,+393330000069,Cesena
+70,Erika,Sala,erika.s.70@email.it,+393330000070,Lecce
+71,Luca,Sanna,luca.s.71@email.it,+393330000071,Veglie
+72,Alessia,Riva,alessia.r.72@email.it,+393330000072,Pesaro
+73,Paolo,Galli,paolo.g.73@email.it,+393330000073,Alessandria
+74,Marta,Russo,marta.r.74@email.it,+393330000074,Barletta
+75,Alberto,Morelli,alberto.m.75@email.it,+393330000075,Catanzaro
+76,Veronica,Pellegrino,veronica.p.76@email.it,+393330000076,Pistoia
+77,Roberto,Fabbri,roberto.f.77@email.it,+393330000077,Brindisi
+78,Irene,Gatti,irene.g.78@email.it,+393330000078,Pisa
+79,Enrico,Serra,enrico.s.79@email.it,+393330000079,Torre del Greco
+80,Serena,Coppola,serena.c.80@email.it,+393330000080,Como
+81,Giorgio,Palumbo,giorgio.p.81@email.it,+393330000081,Lucca
+82,Silvia,Rizzi,silvia.r.82@email.it,+393330000082,Guidonia
+83,Massimo,Amato,massimo.a.83@email.it,+393330000083,Pozzuoli
+84,Claudia,D'Angelo,claudia.d.84@email.it,+393330000084,Treviso
+85,Carmine,Piras,carmine.p.85@email.it,+393330000085,Busto Arsizio
+86,Noemi,Bianco,noemi.b.86@email.it,+393330000086,Varese
+87,Salvatore,De Angelis,salvatore.d.87@email.it,+393330000087,Grosseto
+88,Giada,Marino,giada.m.88@email.it,+393330000088,Casoria
+89,Domenico,Sanna,domenico.s.89@email.it,+393330000089,Sesto San Giovanni
+90,Alessio,Sorrentino,alessio.s.90@email.it,+393330000090,Cinisello Balsamo
+91,Miriam,Conte,miriam.c.91@email.it,+393330000091,Gela
+92,Gianluca,Ruggiero,gianluca.r.92@email.it,+393330000092,Asti
+93,Cristina,Vitali,cristina.v.93@email.it,+393330000093,Cremona
+94,Vittorio,Ferraro,vittorio.f.94@email.it,+393330000094,Pavia
+95,Antonella,Rossetti,antonella.r.95@email.it,+393330000095,L'Aquila
+96,Massimiliano,Gatti,massimiliano.g.96@email.it,+393330000096,Trapani
+97,Angela,Serra,angela.s.97@email.it,+393330000097,Aprilia
+98,Emanuela,Fabbri,emanuela.f.98@email.it,+393330000098,Cosenza
+99,Mario,Rossi,mario.r.99@email.it,+393330000099,Viterbo
+100,Tiziana,Bianchi,tiziana.b.100@email.it,+393330000100,Potenza

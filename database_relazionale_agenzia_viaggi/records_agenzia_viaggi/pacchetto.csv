@@ -1,0 +1,61 @@
+ID_Pacchetto,Nome_Pacchetto,Descrizione,Durata_In_Giorni,ID_Hotel,ID_Destinazione,ID_Mezzo
+1,Fuga nel Salento Ionico,Scopri le spiagge salentine con tour guidato,7,1,1,5
+2,Tokyo Express,Immersione totale nella metropoli giapponese,10,2,2,1
+3,Incubo ad Arklay,Soggiorno da brivido nella foresta di Raccoon City,3,13,3,4
+4,Magia Partenopea,Tra i vicoli di Napoli e il calore del Vesuvio,5,5,4,3
+5,Barocco Leccese,Cultura e gastronomia nella Firenze del Sud,4,6,5,3
+6,Misteri del Lago,Ritiro psicologico sulle rive di Rusty Lake,4,17,6,1
+7,Notti a Kamurocho,Vivi l'intrattenimento notturno del quartiere piu acceso,7,4,2,1
+8,Relax a Gallipoli,La perla dello Ionio tra mare cristallino e movida,7,8,7,4
+9,Vacanze Romane,Tour storico tra i monumenti della Capitale,5,9,8,3
+10,Tour del Kansai,Cucina e divertimento sfrenato a Osaka,10,14,9,1
+11,Bizzarra Estate a Morioh,Avventura tranquilla in una cittadina unica,5,12,10,3
+12,Eroi di Yokohama,Esplorazione urbana e vista mozzafiato sulla baia,6,16,11,1
+13,Otranto e il suo Castello,Il punto piu a est d'Italia tutto da scoprire,4,20,12,5
+14,Autentica Veglie,Esperienza tradizionale nel cuore dell'entroterra,3,23,13,5
+15,Weekend a Milano,Shopping e design nel centro meneghino,3,24,14,3
+16,Romanticismo in Laguna,Un viaggio indimenticabile tra i canali di Venezia,4,25,15,3
+17,Rinascimento Fiorentino,Arte e storia in ogni angolo della citta,5,26,16,3
+18,Pace a Kyoto,Meditazione e relax tra i giardini zen,8,32,22,1
+19,Sotto la Torre Eiffel,Fuga d'amore nella capitale francese,5,34,23,1
+20,La Grande Mela,Una settimana indimenticabile a New York,7,36,25,1
+21,Shibuya Underground,Scopri i segreti giovanili di Tokyo,6,11,2,1
+22,Infiltrazione al Millennium,Avventura urbana e lusso a Kamurocho,4,22,2,1
+23,Ombre su Raccoon,Fuga tattica fuori citta e pernottamento rapido,2,3,3,5
+24,I Misteri di Passione,Tour della citta partenopea e coste limitrofe,6,18,4,3
+25,I Segreti di Rusty Lake,Esplorazione enigmista al Du Lac,5,7,6,1
+26,Sotenbori Nights,Tra neon e street food nel cuore di Osaka,7,14,9,1
+27,Giappone Esoterico,Tour tra le scuole e i templi di Tokyo,14,19,2,1
+28,Trappola di Neve,Inverno bianco e atmosfere uniche a Sapporo,6,33,2,1
+29,Cyberspazio a Tokyo,Soggiorno futuristico assistito dal Sybil System,5,21,2,1
+30,Rifugio dei Phantom,Soggiorno intimo a LeBlanc e tour di Yongen-Jaya,7,15,2,1
+31,Bologna Dotta e Grassa,Gastronomia e cultura universitaria,3,27,17,3
+32,Misteri Sabaudi,Tour dell'occulto e del cioccolato a Torino,4,28,18,3
+33,Calore di Sicilia,Mercati e storia normanna a Palermo,5,29,19,1
+34,I Carruggi di Genova,Alla scoperta del grande porto e dell'Acquario,3,30,20,3
+35,Caraibi del Salento,Spiagge bianche e relax a Porto Cesareo,7,31,21,4
+36,Trekking Ionico,Avventura e natura sulla costa salentina,5,1,1,5
+37,Le Meraviglie del Vaticano,Un viaggio spirituale e storico,3,9,8,3
+38,Carnevale a Venezia,Maschere ed eleganza sull'acqua,5,25,15,3
+39,Milano Fashion Week,Esclusivo tour dedicato alla moda italiana,4,24,14,3
+40,Sulla Cima della Torre,Lusso estremo nel cuore di Kamurocho,8,22,2,1
+41,Passeggiata a Dotonbori,Viaggio breve per amanti del cibo a Osaka,3,10,9,1
+42,L'Alba di Otranto,Risveglio ad Est e tour costiero in minivan,4,20,12,5
+43,Campagna Salentina,Vigneti e masserie partendo da Veglie,5,23,13,5
+44,Vesuvio e Pompei,Escursione archeologica con base a Napoli,6,5,4,4
+45,Sopravvivenza nei Boschi,Tre giorni intensi sui Monti Arklay,3,13,3,4
+46,Medioevo Fiorentino,Musei e gallerie d'arte rinascimentale,4,26,16,3
+47,Luci di New York,Tour serale di Manhattan e Broadway,8,36,25,1
+48,Romanticismo a Parigi,Crociera sulla Senna e cene stellate,4,34,23,1
+49,Tradizione a Kyoto,Soggiorno in Ryokan e cerimonie del te,10,32,22,1
+50,Fuga in Giappone,Tour esteso con hub centrale a Tokyo,15,2,2,1
+51,Giallo al Rusty Lake,Soggiorno investigativo di gruppo,5,17,6,1
+52,Miramare Exclusive,Lusso sfrenato e yacht a Gallipoli,7,8,7,2
+53,Baia di Yokohama,Gita in barca e scoperta dei quartieri,5,16,11,2
+54,La Quiete di Morioh,Passeggiate tranquille e vita locale,4,12,10,3
+55,Salento on the Road,Tour della penisola in pullman,8,6,5,4
+56,Cena Esclusiva a LeBlanc,Weekend gastronomico speciale a Tokyo,3,15,2,1
+57,I Misteri del Sud,Da Napoli alle coste pugliesi in treno,10,18,4,3
+58,Avventura a Porto Cesareo,Snorkeling e parchi marini,6,31,21,5
+59,Capodanno a Londra,Fuochi d'artificio sul Tamigi,4,35,24,1
+60,Tour del Grand Hotel,La migliore esperienza della costa nardotina,7,1,1,5
