@@ -1,1 +1,99 @@
+// ==============================================================================
+// 1. CREAZIONE INDICE E MAPPING
+// ==============================================================================
+// PUT è il verbo HTTP usato per creare risorse. Stiamo dicendo a ES di creare l'indice.
+PUT /expedition33-reviews
+{
+  "settings": {
+    "number_of_shards": 1, // Usa un solo frammento primario (ideale per test locali)
+    "number_of_replicas": 0 // Zero repliche di backup (non servono su un nodo singolo)
+  },
+  "mappings": {
+    "properties": {
+      // "keyword" viene usato per campi identificativi esatti (non analizzati parola per parola)
+      "review_id":        { "type": "keyword" },
+      "username":         { "type": "keyword" },
+      // "integer", "float" e "boolean" tipizzano i dati per permettere filtri matematici
+      "games_owned":      { "type": "integer" },
+      "reviews_written":  { "type": "integer" },
+      "recommended":      { "type": "boolean" },
+      "playtime_hours":   { "type": "float" },
+      "helpful_votes":    { "type": "integer" },
+      "funny_votes":      { "type": "integer" },
+      "created_at":       { "type": "date", "format": "yyyy-MM-dd" },
+      // "text" dice a ES di analizzare e indicizzare ogni singola parola.
+      // L'analyzer "italian" rimuove articoli, preposizioni e riconosce le radici delle parole.
+      "review_text":      { "type": "text", "analyzer": "italian" }
+    }
+  }
+}
 
+// ==============================================================================
+// 2. QUERY E AGGREGAZIONI
+// ==============================================================================
+
+// QUERY 1: Aggregazione (Sentiment)
+// GET e _search dicono a ES di avviare una ricerca.
+GET /expedition33-reviews/_search
+{
+  "size": 0, // Diciamo a ES di NON restituire il testo dei documenti, ci interessano solo i conti.
+  "aggs": {  // Blocco aggregazioni (operazioni di raggruppamento)
+    "divisione_sentiment": { // Nome personalizzato che diamo all'aggregazione
+      "terms": {             // "terms" raggruppa i documenti in base ai valori esatti di un campo
+        "field": "recommended" // Raggruppa in base a "true" (consigliato) o "false"
+      }
+    }
+  }
+}
+
+// QUERY 2: Ricerca Full-Text 
+GET /expedition33-reviews/_search
+{
+  "query": {
+    "match": { // "match" esegue una ricerca testuale analizzata (fuzzy search)
+      "review_text": "mappa" // Cerca il termine o i suoi derivati nel campo testo
+    }
+  }
+}
+
+// QUERY 3: Filtro Range e Ordinamento
+GET /expedition33-reviews/_search
+{
+  "query": {
+    "range": { // "range" permette di filtrare su intervalli numerici o di date
+      "helpful_votes": {
+        "gte": 100 // Greater Than or Equal (Maggiore o uguale a 100)
+      }
+    }
+  },
+  "sort": [ // Istruzione di ordinamento dei risultati
+    {
+      "helpful_votes": {
+        "order": "desc" // Ordinamento decrescente (dal più alto al più basso)
+      }
+    }
+  ]
+}
+
+// QUERY 4: Query Booleana (Filtri combinati)
+GET /expedition33-reviews/_search
+{
+  "query": {
+    "bool": { // "bool" permette di unire più clausole logiche (AND, OR, NOT)
+      "must": [ // Condizione MUST (AND puro): deve per forza soddisfare questa ricerca
+        {
+          "match": {
+            "review_text": "jrpg"
+          }
+        }
+      ],
+      "filter": [ // Condizione FILTER: applica una regola binaria esatta senza calcolare uno score di rilevanza (più veloce del must)
+        {
+          "term": { // "term" cerca un match esatto al 100%, senza analizzare il testo
+            "recommended": true
+          }
+        }
+      ]
+    }
+  }
+}
