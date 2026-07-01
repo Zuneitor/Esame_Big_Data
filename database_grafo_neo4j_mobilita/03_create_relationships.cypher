@@ -1,4 +1,6 @@
-// Creazione massiva dei collegamenti tra le stazioni della rete di trasporti di Tokyo.
+// ========================================================================================
+// 1. CREAZIONE COLLEGAMENTI RETE METROPOLITANA
+// ========================================================================================
 // Le relazioni sono bidirezionali e la durata in minuti viene calcolata dinamicamente 
 // incrociando la distanza chilometrica con la velocità media della linea di appartenenza.
 
@@ -42,7 +44,7 @@ UNWIND [
     {da: "F6",  a: "F22", linea: "L4", distanza_km: 0.9},
     {da: "F22", a: "F15", linea: "L4", distanza_km: 2.8},
     {da: "F15", a: "F20", linea: "L4", distanza_km: 1.1},
-    {da: "F20", a: "F8",  linea: "L4", distanza_km: 3.2}, // Errore corretto da Track_dist_km a distanza_km
+    {da: "F20", a: "F8",  linea: "L4", distanza_km: 3.2}, 
     {da: "F8",  a: "F3",  linea: "L4", distanza_km: 2.4},
 
     // --- L5: Hanzomon Line (45 km/h) ---
@@ -67,7 +69,7 @@ UNWIND [
     {da: "F13", a: "F12", linea: "L8", distanza_km: 1.2},
     {da: "F12", a: "F19", linea: "L8", distanza_km: 2.3},
     {da: "F19", a: "F20", linea: "L8", distanza_km: 3.2},
-    {da: "F20", a: "F16", linea: "L8", distanza,km: 4.5},
+    {da: "F20", a: "F16", linea: "L8", distanza_km: 4.5},
     {da: "F16", a: "F24", linea: "L8", distanza_km: 2.5},
 
     // --- L9: Shinjuku Line Toei (45 km/h) ---
@@ -125,3 +127,75 @@ SET r2.distanza_km   = row.distanza_km,
     r2.durata_minuti = round(row.distanza_km / l.velocita_media_kmh * 60, 1),
     r2.linea_nome    = l.nome,
     r2.nome_tratta   = l.nome + ": " + b.nome + " -> " + a.nome;
+
+
+// ========================================================================================
+// 2. CREAZIONE COLLEGAMENTI TRA PUNTI DI INTERESSE E FERMATE (VICINO_A)
+// ========================================================================================
+
+UNWIND [
+  // Zona: Yongen-Jaya (F1)
+  {poi: "P1", fermata: "F1", spazio_m: 120, tempo_min: 2},  // Café Leblanc
+  {poi: "P2", fermata: "F1", spazio_m: 180, tempo_min: 3},  // Clinica Medica Takemi
+  {poi: "P3", fermata: "F1", spazio_m: 210, tempo_min: 3},  // Lavanderia a gettoni
+  {poi: "P4", fermata: "F1", spazio_m: 250, tempo_min: 4},  // Bagni Pubblici
+  {poi: "P5", fermata: "F1", spazio_m: 290, tempo_min: 4},  // Negozio dell'usato Yumenoshima
+  
+  // Zona: Aoyama-Itchome (F5)
+  {poi: "P6", fermata: "F5", spazio_m: 400, tempo_min: 6},  // Shujin Academy
+  {poi: "P7", fermata: "F5", spazio_m: 450, tempo_min: 7},  // Palazzo di Kamoshida
+  
+  // Zona: Shibuya (F2)
+  {poi: "P8", fermata: "F2", spazio_m: 50,  tempo_min: 1},  // Central Street
+  {poi: "P9", fermata: "F2", spazio_m: 160, tempo_min: 2},  // Untouchable (Airsoft Shop)
+  {poi: "P10", fermata: "F2", spazio_m: 220, tempo_min: 3}, // Diner (Shibuya)
+  {poi: "P11", fermata: "F2", spazio_m: 190, tempo_min: 3}, // Big Bang Burger
+  {poi: "P12", fermata: "F2", spazio_m: 310, tempo_min: 5}, // Arcade Gigolo
+  {poi: "P13", fermata: "F2", spazio_m: 400, tempo_min: 6}, // Palestra
+  {poi: "P14", fermata: "F2", spazio_m: 140, tempo_min: 2}, // Libreria Taiheido
+  {poi: "P15", fermata: "F2", spazio_m: 0,   tempo_min: 0}, // Teikyu Building (Sopra la stazione)
+  
+  // Collegamenti Speciali / Sovrannaturali
+  {poi: "P16", fermata: "F1", spazio_m: 10,  tempo_min: 1},  // Stanza di Velluto
+  {poi: "P17", fermata: "F2", spazio_m: 20,  tempo_min: 1},  // Mementos
+  
+  // Zona: Shinjuku (F3)
+  {poi: "P18", fermata: "F3", spazio_m: 600, tempo_min: 9},  // Palazzo di Kaneshiro
+  {poi: "P19", fermata: "F3", spazio_m: 300, tempo_min: 4},  // Quartiere a Luci Rosse
+  {poi: "P20", fermata: "F3", spazio_m: 350, tempo_min: 5},  // Bar Crossroads
+  {poi: "P21", fermata: "F3", spazio_m: 280, tempo_min: 4},  // Tavolo di Chihaya
+  {poi: "P22", fermata: "F3", spazio_m: 150, tempo_min: 2},  // Fioraio di Shinjuku
+  {poi: "P23", fermata: "F3", spazio_m: 450, tempo_min: 6},  // Cinema di Shinjuku
+  
+  // Zona: Akihabara (F4)
+  {poi: "P24", fermata: "F4", spazio_m: 200, tempo_min: 3},  // Maid Cafe
+  {poi: "P25", fermata: "F4", spazio_m: 180, tempo_min: 3},  // Retro Game Shop
+  {poi: "P26", fermata: "F4", spazio_m: 120, tempo_min: 2},  // Negozio di componenti elettronici
+  {poi: "P27", fermata: "F4", spazio_m: 250, tempo_min: 4},  // Sala Giochi Akihabara
+  
+  // Zona: Kichijoji (F7)
+  {poi: "P28", fermata: "F7", spazio_m: 350, tempo_min: 5},  // Penguin Sniper
+  {poi: "P29", fermata: "F7", spazio_m: 400, tempo_min: 6},  // Jazz Jin
+  {poi: "P30", fermata: "F7", spazio_m: 150, tempo_min: 2},  // Tempio di Kichijoji
+  {poi: "P31", fermata: "F7", spazio_m: 220, tempo_min: 3},  // Negozio di vestiti usati
+  {poi: "P32", fermata: "F7", spazio_m: 100, tempo_min: 1},  // Bottega della Carne
+  
+  // Altri Palazzi e Istituzioni 
+  {poi: "P33", fermata: "F20", spazio_m: 500, tempo_min: 7}, // Museo d'Arte -> Ginza
+  {poi: "P34", fermata: "F20", spazio_m: 550, tempo_min: 8}, // Palazzo di Madarame -> Ginza
+  {poi: "P35", fermata: "F30", spazio_m: 900, tempo_min: 12},// Palazzo di Futaba -> Mitaka
+  {poi: "P36", fermata: "F15", spazio_m: 700, tempo_min: 10},// Palazzo di Okumura -> Tokyo
+  {poi: "P37", fermata: "F8",  spazio_m: 200, tempo_min: 3}, // Tribunale di Tokyo -> Yotsuya
+  {poi: "P38", fermata: "F8",  spazio_m: 250, tempo_min: 4}, // Palazzo di Niijima -> Yotsuya
+  {poi: "P39", fermata: "F21", spazio_m: 300, tempo_min: 4}, // Dieta Nazionale -> Shimbashi
+  {poi: "P40", fermata: "F21", spazio_m: 350, tempo_min: 5}, // Palazzo di Shido -> Shimbashi
+  {poi: "P41", fermata: "F6",  spazio_m: 150, tempo_min: 2}, // Cupola di Tokyo -> Suidobashi
+  {poi: "P42", fermata: "F7",  spazio_m: 500, tempo_min: 7}  // Parco Inokashira -> Kichijoji
+] AS riga
+
+MATCH (p:PuntoInteresse {codice: riga.poi})
+MATCH (f:Fermata {codice: riga.fermata})
+
+MERGE (p)-[r:VICINO_A]->(f)
+SET r.distanza_metri = toFloat(riga.spazio_m),
+    r.tempo_piedi_min = toInteger(riga.tempo_min);
